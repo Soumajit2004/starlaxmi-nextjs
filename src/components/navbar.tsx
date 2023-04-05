@@ -1,0 +1,28 @@
+import Link from "next/link";
+
+export default function Navbar() {
+  return (
+    <div className={"bg-neutral border-b-2"}>
+      <div className="navbar container mx-auto h-20">
+        <div className="flex-1">
+          <Link
+            className="text-2xl font-display tracking-wider uppercase text-white"
+            href={"/"}
+          >
+            Starlaxmi
+          </Link>
+        </div>
+        <div className="flex-none font-sans">
+          <ul className="menu menu-horizontal px-1">
+            <li>
+              <Link href={"#"}>Today Result</Link>
+            </li>
+            <li>
+              <Link href={"#"}>Previous Result</Link>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  );
+}
