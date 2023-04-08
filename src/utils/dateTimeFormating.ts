@@ -1,4 +1,4 @@
-import moment, { months } from "moment";
+import moment from "moment";
 
 export const standardizeHour = (currentDate: Date): Date => {
   currentDate.setUTCHours(12, 0, 0, 0);

@@ -1,4 +1,4 @@
-import { FunctionComponent, useState } from "react";
+import React, { useState } from "react";
 import type { pastThreeMonthsResultType, threeMonthResultType } from "../../types/resultTypes";
 import { timeOptions } from "../../data/data";
 import moment from "moment";
@@ -9,7 +9,7 @@ const monthIDs = [
   "secondLastMonth"
 ];
 
-const PastThreeMonthsResults: FunctionComponent<{ pastThreeMonthsResultData: pastThreeMonthsResultType }> = ({
+const PastThreeMonthsResults: React.FunctionComponent<{ pastThreeMonthsResultData: pastThreeMonthsResultType }> = ({
                                                                                                                pastThreeMonthsResultData
                                                                                                              }) => {
   const {
@@ -50,7 +50,7 @@ const PastThreeMonthsResults: FunctionComponent<{ pastThreeMonthsResultData: pas
   );
 };
 
-const Table: FunctionComponent<{ month: { results: threeMonthResultType, allDates: string[] } }> = ({ month }) => {
+const Table: React.FunctionComponent<{ month: { results: threeMonthResultType, allDates: string[] } }> = ({ month }) => {
   return <div className="overflow-x-auto w-full">
     <table className="table table-zebra w-full font-sans table-compact text-center">
       {/* head */}

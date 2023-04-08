@@ -35,7 +35,9 @@ const Home: NextPage<HomePageProps> = ({ todayResult, pastThreeMonthsResult }) =
         </section>
 
         <section className={"container mx-auto py-5 lg:py-10"}>
-          <h3 className={"text-2xl md:text-4xl xl:text-5xl font-display font-bold text-white mb-10 text-center lg:text-left"}>Previous Results</h3>
+          <h3
+            className={"text-2xl md:text-4xl xl:text-5xl font-display font-bold text-white mb-10 text-center lg:text-left"}>Previous
+            Results</h3>
           <PastThreeMonthsResults pastThreeMonthsResultData={pastThreeMonthsResult} />
         </section>
       </main>
@@ -58,6 +60,7 @@ export const getStaticProps: GetStaticProps = async () => {
       trpcState: ssg.dehydrate(),
       todayResult: fetchedTodayResults as todayResultType,
       pastThreeMonthsResult: fetchedThreeMonthsResults as pastThreeMonthsResultType
-    }
+    },
+    revalidate: 60
   };
 };

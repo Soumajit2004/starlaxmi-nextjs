@@ -36,7 +36,9 @@ export const api = createTRPCNext<AppRouter>({
        * */
       links: [
         loggerLink({
+          // @typescript-eslint/no-unused-vars
           enabled: (opts) =>
+            // @typescript-eslint/no-unused-vars
             process.env.NODE_ENV === "development" ||
             (opts.direction === "down" && opts.result instanceof Error),
         }),

@@ -1,6 +1,6 @@
 import styles from "../../styles/liveResults.module.css";
 import { timeOptions } from "../../data/data";
-import { todayResultType } from "../../types/resultTypes";
+import type { todayResultType } from "../../types/resultTypes";
 
 const LiveAnimation = () => {
   return (

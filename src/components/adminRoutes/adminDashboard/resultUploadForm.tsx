@@ -1,4 +1,5 @@
-import React, { FunctionComponent, useCallback, useEffect } from "react";
+import React from "react";
+import type { FunctionComponent } from "react";
 import { Formik } from "formik";
 import classNames from "classnames";
 import { useRecoilValue } from "recoil";
@@ -34,11 +35,6 @@ const ResultUploadForm = () => {
     queryTimeSlot: selectedDateTime?.time as string
   });
 
-  useEffect(() => {
-    void refetch();
-  }, [selectedDateTime]);
-
-
   if (isFetching) return <DashboardMessages message={"Loading..."} />;
 
   if (!data || error) return <DashboardMessages message={"Something Went Wrong!"} />;
@@ -57,7 +53,7 @@ const ResultUploadForm = () => {
           resultSmall: resultSmall
         });
 
-        res.error ? toast.error("Ouch! An Error Occurred.") : null;
+        res.error ? toast.error("Ouch! An Error Occurred.") : await refetch();
 
         setSubmitting(false);
       }}

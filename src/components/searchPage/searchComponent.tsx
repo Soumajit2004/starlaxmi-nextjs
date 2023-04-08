@@ -1,10 +1,10 @@
-import React, { ChangeEventHandler, FunctionComponent, useState } from "react";
+import React, { useState } from "react";
 import moment from "moment";
 import { api } from "../../utils/api";
 import { timeOptions } from "../../data/data";
 import DashboardMessages from "../dashboardMessages";
 
-const ResultSearch: FunctionComponent = () => {
+const ResultSearch: React.FunctionComponent = () => {
   const [selectedDate, setSelectedDate] = useState<{ date: Date }>({ date: new Date() });
 
   const { error, data, isFetching } = api.formatedResults.getFullDayResults.useQuery({ queryDate: selectedDate.date });
