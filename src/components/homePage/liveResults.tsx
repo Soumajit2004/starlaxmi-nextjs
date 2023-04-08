@@ -1,4 +1,4 @@
-import styles from "../../styles/LiveResults.module.css";
+import styles from "../../styles/liveResults.module.css";
 import { timeOptions } from "../../data/data";
 import { todayResultType } from "../../types/resultTypes";
 
