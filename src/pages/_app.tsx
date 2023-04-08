@@ -8,7 +8,6 @@ import "../styles/globals.css";
 import type { FunctionComponent, ReactNode } from "react";
 import { RecoilRoot } from "recoil";
 import { Toaster } from "react-hot-toast";
-import { UserProvider } from "@auth0/nextjs-auth0/client";
 
 const display = Yeseva_One({
   weight: ["400"],
@@ -34,7 +33,6 @@ const FontWrapper: FunctionComponent<{ children: ReactNode }> = ({
 
 const MyApp: AppType = ({ Component, pageProps }) => {
   return (
-    <UserProvider>
     <RecoilRoot>
       <FontWrapper>
         <Component {...pageProps} />
@@ -45,7 +43,6 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           }} />
       </FontWrapper>
     </RecoilRoot>
-    </UserProvider>
   );
 };
 
