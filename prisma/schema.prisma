@@ -17,6 +17,7 @@ model Result {
   timeSlot    String
   resultLarge Int
   resultSmall Int
+  updatedAt   DateTime @default(now())
 
   @@unique([date, timeSlot])
 }

@@ -1,4 +1,3 @@
-import { UserButton } from "@clerk/nextjs";
 import Link from "next/link";
 
 export default function AdminNavbar() {
@@ -14,13 +13,7 @@ export default function AdminNavbar() {
           </Link>
         </div>
         <div className="flex-none">
-          <UserButton
-            appearance={{
-              variables: {
-                fontFamily: "sans-serif",
-              },
-            }}
-          />
+
         </div>
       </div>
     </div>

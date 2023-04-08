@@ -66,7 +66,8 @@ export const singleResultRouter = createTRPCRouter({
             id: true
           }, data: {
             resultLarge: resultLarge == 0 ? undefined : resultLarge,
-            resultSmall: resultSmall == 0 ? undefined : resultSmall
+            resultSmall: resultSmall == 0 ? undefined : resultSmall,
+            updatedAt: new Date()
           }, where: {
             date_timeSlot: {
               date: date,
