@@ -22,7 +22,7 @@ const Home: NextPage<HomePageProps> = ({ todayResult, pastThreeMonthsResult }) =
         <title>Starlaxmi</title>
         <meta
           name="description"
-          content="Check your result now at starlaxmi. Official result."
+          content="Check your result now at starlaxmi. Official results."
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
