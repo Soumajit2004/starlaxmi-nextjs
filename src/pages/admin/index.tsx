@@ -2,7 +2,6 @@ import Head from "next/head";
 import AdminLayout from "../../components/adminRoutes/adminLayout";
 import DateTimeSelectorForm from "../../components/adminRoutes/adminDashboard/dateTimeSelectorForm";
 import ResultUploadForm from "../../components/adminRoutes/adminDashboard/resultUploadForm";
-import { withPageAuthRequired } from "@auth0/nextjs-auth0";
 
 
 export default function AdminDashboard() {
@@ -26,5 +25,3 @@ export default function AdminDashboard() {
     </AdminLayout>
   );
 }
-
-export const getServerSideProps = withPageAuthRequired()
