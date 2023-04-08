@@ -1,4 +1,6 @@
 import styles from "../../styles/LiveResults.module.css";
+import { timeOptions } from "../../data/data";
+import { todayResultType } from "../../types/resultTypes";
 
 const LiveAnimation = () => {
   return (
@@ -10,58 +12,101 @@ const LiveAnimation = () => {
         <div className={styles.circle2}></div>
         <div className={styles.circle3}></div>
       </div>
-      <h2 className={"uppercase text-4xl font-bold"}>Live results</h2>
+      <h2 className={"uppercase text-xl lg:text-2xl xl:text-4xl font-bold"}>Live results</h2>
     </div>
   );
 };
 
-const CurrentResult = () => {
-  return (
-    <div
-      className={
-        "flex mx-auto bg-primary/80 hover:bg-primary-focus rounded-xl " +
-        "py-5 px-8 min-w-full justify-between items-center duration-500"
+export default function LiveResults({ todayResult }: { todayResult: todayResultType }) {
+  const getResultByTime = (timeSlot: string): { resultLarge: number, resultSmall: number } => {
+    const filteredData = todayResult.filter(({ timeSlot: t }) => {
+      if (t === timeSlot) {
+        return true;
       }
-    >
-      <h3 className="text-white text-3xl font-display">Result of 11:30 PM</h3>
-      <h1
-        className={
-          "text-5xl bg-success rounded-lg text-success-content pt-2 px-4 font-sans font-bold border-2 border-success-content"
-        }
-      >
-        172-5
-      </h1>
-    </div>
-  );
-};
+      return false;
+    });
+    return {
+      resultLarge: filteredData[0]?.resultLarge || 0,
+      resultSmall: filteredData[0]?.resultSmall || 0
+    };
+  };
 
-const ResultTable = () => {
+  const getLatestResult = (): { timeSlot: string | undefined, resultLarge: number, resultSmall: number } => {
+    let res = {
+      timeSlot: " * * * ",
+      resultLarge: 0,
+      resultSmall: 0
+    };
+    const reversedResults = todayResult.reverse();
+    reversedResults.forEach((r) => {
+      res = {
+        timeSlot: r?.timeSlot ? r.timeSlot : "--",
+        resultLarge: r.resultLarge || 0,
+        resultSmall: r.resultSmall || 0
+      };
+    });
+
+    return res;
+  };
+
+
+  const latestResult = getLatestResult();
   return (
-    <div className={"grid grid-cols-2 grid-rows-5 w-full"}>
+    <div className={"flex items-center justify-center"}>
       <div
         className={
-          "col-span-2 bg-primary/80 text-center py-6 rounded-lg font-sans font-bold uppercase text-xl"
+          "h-min py-10 px-4 md:p-10 rounded-2xl bg-base-100/20 text-center duration-500" +
+          "hover:scale-102 hover:bg-base-100/50 border-2 hover:border-primary md:mx-20 lg:mx-5 w-full"
         }
       >
-        <h3>{"Today's Result"}</h3>
+        <LiveAnimation />
+
+
+        <div className={"flex flex-col gap-2 mt-4"}>
+          {/*latest result*/}
+          <div
+            className={
+              "flex mx-auto bg-primary/80 hover:bg-primary-focus rounded-xl " +
+              "p-3 lg:py-5 lg:px-8 min-w-full justify-between items-center duration-500"
+            }
+          >
+            <h3 className="text-white sm:text-xl xl:text-2xl font-display">Result of {latestResult.timeSlot}</h3>
+            <h1
+              className={
+                "text-xl sm:text-2xl  xl:text-4xl bg-success rounded-lg text-success-content pt-2 px-4 font-sans font-bold border-2 border-success-content"
+              }
+            >
+              {latestResult.resultLarge} - {latestResult.resultSmall}
+            </h1>
+          </div>
+
+          {/*result table*/}
+          <div className={"grid grid-cols-2 grid-rows-5 w-full gap-2"}>
+            <div
+              className={
+                "col-span-2 bg-primary/80 py-2 lg:py-4 flex items-center justify-center rounded-lg font-sans font-bold uppercase text-xl"
+              }
+            >
+              <h3>{"Today's Result"}</h3>
+            </div>
+
+            {timeOptions.map((timeSlot) => {
+              const result = getResultByTime(timeSlot);
+
+              return (
+                <div key={timeSlot}
+                     className={"bg-secondary/60 text-center py-2 lg:py-4 rounded-lg " +
+                       "font-sans font-bold uppercase sm:text-xl flex justify-around p-2 xl:px-10 items-center"}>
+                  <h3>{timeSlot}</h3>
+                  <div className={"bg-success text-success-content px-2 py-1 rounded-lg"}>
+                    <h3>{result.resultLarge} - {result.resultSmall}</h3>
+                  </div>
+                </div>);
+            })}
+          </div>
+        </div>
       </div>
     </div>
-  );
-};
 
-export default function LiveResults() {
-  return (
-    <div
-      className={
-        "h-full py-5 px-10 rounded-2xl flex flex-col bg-base-100/20 justify-around text-center duration-500 " +
-        "hover:scale-102 hover:bg-base-100/50 border-2 hover:border-primary"
-      }
-    >
-      <LiveAnimation />
-
-      <CurrentResult />
-
-      <ResultTable />
-    </div>
   );
 }

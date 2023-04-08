@@ -1,5 +1,6 @@
 import Navbar from "./navbar";
 import { ReactNode } from "react";
+import Footer from "./footer";
 
 
 export default function Layout({ children }: { children: ReactNode }) {
@@ -7,6 +8,7 @@ export default function Layout({ children }: { children: ReactNode }) {
     <>
       <Navbar />
       {children}
+      <Footer/>
     </>
   );
 }

@@ -1,27 +1,21 @@
-import { type NextPage } from "next";
+import type { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
-import type { FunctionComponent } from "react";
-
 
 import Layout from "../components/layout";
 import LiveResults from "../components/homePage/liveResults";
+import { generateSSGHelper } from "../server/api/helpers/ssgHelper";
+import type { pastThreeMonthsResultType, todayResultType } from "../types/resultTypes";
+import type { DehydratedState } from "@tanstack/query-core";
+import HeroText from "../components/homePage/hetoText";
+import PastThreeMonthsResults from "../components/homePage/lastThreeMonthsResults";
 
-const HeroText: FunctionComponent = () => {
-  return (
-    <div className="prose flex min-w-full select-none flex-col justify-center font-sans">
-      <h1 className="mb-0 font-display text-8xl text-white decoration-primary duration-500 hover:underline ">
-        {"Bengal's NO 1"}
-      </h1>
-      <h2 className="mt-5 text-4xl text-white ">matka platform.</h2>
-      <p>Starlaxmi is the best matka platform in Bengal. We provide the best</p>
-      <button className="btn-xl btn-primary btn mt-10 h-16 w-40">
-        Join Now
-      </button>
-    </div>
-  );
-};
+interface HomePageProps {
+  trpcState: DehydratedState,
+  todayResult: todayResultType,
+  pastThreeMonthsResult: pastThreeMonthsResultType
+}
 
-const Home: NextPage = () => {
+const Home: NextPage<HomePageProps> = ({ todayResult, pastThreeMonthsResult }) => {
   return (
     <Layout>
       <Head>
@@ -33,15 +27,37 @@ const Home: NextPage = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={"container mx-auto grid h-[90vh] py-10 lg:grid-cols-2"}>
-        <HeroText />
+      <main>
+        <section className={"container mx-auto grid h-[90vh] lg:grid-cols-2"}>
+          <HeroText />
 
-        <div className="px-20">
-          <LiveResults />
-        </div>
+          <LiveResults todayResult={todayResult} />
+        </section>
+
+        <section className={"container mx-auto py-5 lg:py-10"}>
+          <h3 className={"text-2xl md:text-4xl xl:text-5xl font-display font-bold text-white mb-10 text-center lg:text-left"}>Previous Results</h3>
+          <PastThreeMonthsResults pastThreeMonthsResultData={pastThreeMonthsResult} />
+        </section>
       </main>
     </Layout>
   );
 };
 
 export default Home;
+
+
+export const getStaticProps: GetStaticProps = async () => {
+  // eslint-disable-next-line @typescript-eslint/await-thenable
+  const ssg = await generateSSGHelper();
+
+  const fetchedTodayResults = await ssg.formatedResults.getFullDayResults.fetch({ queryDate: new Date() });
+  const fetchedThreeMonthsResults = await ssg.formatedResults.getThreeLastMonthsResults.fetch();
+
+  return {
+    props: {
+      trpcState: ssg.dehydrate(),
+      todayResult: fetchedTodayResults as todayResultType,
+      pastThreeMonthsResult: fetchedThreeMonthsResults as pastThreeMonthsResultType
+    }
+  };
+};

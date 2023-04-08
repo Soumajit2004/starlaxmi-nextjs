@@ -2,14 +2,9 @@ import { z } from "zod";
 
 import { createTRPCRouter, publicProcedure } from "../trpc";
 import { serverSideCaller } from "../root";
+import { standardizeHour } from "../../../utils/dateTimeFormating";
 
-const standardizeHour = (currentDate: Date): Date => {
-  currentDate.setUTCHours(12);
-  return currentDate;
-};
-
-
-export const resultsRouter = createTRPCRouter({
+export const singleResultRouter = createTRPCRouter({
 
   singleResult: publicProcedure
     .input(z.object({ queryDate: z.date(), queryTimeSlot: z.string() }))

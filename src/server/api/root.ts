@@ -1,6 +1,7 @@
 import { createTRPCRouter } from "./trpc";
-import { resultsRouter } from "./routers/results";
+import { singleResultRouter } from "./routers/singleResult";
 import { prisma } from "../db";
+import { formatedResultsRouter } from "./routers/formatedResult";
 
 /**
  * This is the primary router for your server.
@@ -8,7 +9,8 @@ import { prisma } from "../db";
  * All routers added in /api/routers should be manually added here
  */
 export const appRouter = createTRPCRouter({
-  result: resultsRouter,
+  result: singleResultRouter,
+  formatedResults: formatedResultsRouter
 });
 
 export const serverSideCaller = appRouter.createCaller({ prisma });

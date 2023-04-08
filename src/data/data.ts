@@ -1,4 +1,4 @@
-export const timeOptions = [
+export const timeOptions: string[] = [
   "10:00 AM",
   "11:30 AM",
   "01:00 PM",

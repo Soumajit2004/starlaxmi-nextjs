@@ -15,10 +15,12 @@ export default function Navbar() {
         <div className="flex-none font-sans">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <Link href={"#"}>Today Result</Link>
-            </li>
-            <li>
-              <Link href={"#"}>Previous Result</Link>
+              <Link href={"/search"} className={"btn btn-secondary"}>
+                <span className="material-symbols-rounded">
+                    search
+                </span>
+                <h3>Search</h3>
+              </Link>
             </li>
           </ul>
         </div>

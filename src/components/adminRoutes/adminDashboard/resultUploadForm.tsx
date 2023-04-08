@@ -5,12 +5,8 @@ import { useRecoilValue } from "recoil";
 import { selectedDateTimeState } from "../../../recoil/resultAtom";
 import { api } from "../../../utils/api";
 import toast from "react-hot-toast";
+import DashboardMessages from "../../dashboardMessages";
 
-const AdminDashboardMessages: FunctionComponent<{ message: string }> = ({ message }) => (
-  <div className={"text-center border-2 min-w-full rounded-lg border-dashed border-primary bg-base-100/50 p-36 prose"}>
-    <h2 className={"text-3xl"}>{message}</h2>
-  </div>
-);
 
 const ResultStatusCard: FunctionComponent<{ title: string; message: string }> = ({ title, message }) => {
   return (
@@ -43,9 +39,9 @@ const ResultUploadForm = () => {
   }, [selectedDateTime]);
 
 
-  if (isFetching) return <AdminDashboardMessages message={"Loading..."} />;
+  if (isFetching) return <DashboardMessages message={"Loading..."} />;
 
-  if (!data || error) return <AdminDashboardMessages message={"Something Went Wrong!"} />;
+  if (!data || error) return <DashboardMessages message={"Something Went Wrong!"} />;
 
   return (
     <Formik
