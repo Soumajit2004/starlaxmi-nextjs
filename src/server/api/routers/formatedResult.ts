@@ -7,7 +7,7 @@ export const formatedResultsRouter = createTRPCRouter({
   getFullDayResults: publicProcedure
     .input(z.object({ queryDate: z.date() }))
     .query(async ({ input: { queryDate }, ctx }) => {
-      const response = await ctx.prisma.result.findMany({
+      return await ctx.prisma.result.findMany({
         select: {
           timeSlot: true,
           resultLarge: true,
@@ -16,9 +16,7 @@ export const formatedResultsRouter = createTRPCRouter({
         where: {
           date: { equals: standardizeHour(queryDate) }
         }
-      });
-
-      return response;
+      }) || [];
     }),
   getThreeLastMonthsResults: publicProcedure
     .query(async ({ ctx }) => {

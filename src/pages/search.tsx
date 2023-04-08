@@ -23,7 +23,7 @@ const SearchPage: NextPage = () => {
               Search
               Results
             </h1>
-            <h4 className={"text-white font-sans"}>
+            <h4 className={"text-white font-sans hidden lg:block"}>
               Welcome to our Matka Game Results search page!
               <br />
               <br />
