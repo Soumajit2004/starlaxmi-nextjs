@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import moment from "moment";
 import { api } from "../../utils/api";
-import { timeOptions } from "../../data/data";
+import { timeOptions } from "../../utils/data";
 import DashboardMessages from "../dashboardMessages";
 
 const ResultSearch: React.FunctionComponent = () => {

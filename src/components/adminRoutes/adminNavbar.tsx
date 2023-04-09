@@ -1,6 +1,9 @@
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
 
 export default function AdminNavbar() {
+  const { data: session } = useSession();
+
   return (
     <div className={"border-b-2 bg-neutral"}>
       <div className="container navbar mx-auto h-20">
@@ -12,9 +15,21 @@ export default function AdminNavbar() {
             Starlaxmi <span className="font-sans">Admin</span>
           </Link>
         </div>
-        <div className="flex-none">
-
-        </div>
+        {session ? (
+          <div className="flex-none gap-10
+          ">
+            <button className={"btn btn-error font-sans"}
+                    onClick={async () => {
+                      await signOut();
+                    }}>
+            <span className="material-symbols-rounded mr-2">
+              logout
+            </span>
+              Logout
+            </button>
+          </div>
+        ) : <div />
+        }
       </div>
     </div>
   );

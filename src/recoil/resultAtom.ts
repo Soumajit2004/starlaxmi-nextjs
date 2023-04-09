@@ -1,5 +1,5 @@
 import { atom } from "recoil";
-import { timeOptions } from "../data/data";
+import { timeOptions } from "../utils/data";
 
 type selectedDateTimeType = {
   date: Date | null,
