@@ -8,6 +8,8 @@ import "../styles/globals.css";
 import type { FunctionComponent, ReactNode } from "react";
 import { RecoilRoot } from "recoil";
 import { Toaster } from "react-hot-toast";
+import { SessionProvider } from "next-auth/react";
+import type { Session } from "next-auth";
 
 const display = Yeseva_One({
   weight: ["400"],
@@ -30,9 +32,12 @@ const FontWrapper: FunctionComponent<{ children: ReactNode }> = ({
     </main>
   );
 };
-
-const MyApp: AppType = ({ Component, pageProps }) => {
+const MyApp: AppType<{ session: Session | null }> = ({
+                          Component,
+                          pageProps: { session, ...pageProps },
+                        }) => {
   return (
+    <SessionProvider session={session}>
     <RecoilRoot>
       <FontWrapper>
         <Component {...pageProps} />
@@ -43,6 +48,7 @@ const MyApp: AppType = ({ Component, pageProps }) => {
           }} />
       </FontWrapper>
     </RecoilRoot>
+    </SessionProvider>
   );
 };
 

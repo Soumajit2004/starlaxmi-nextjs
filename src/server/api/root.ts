@@ -10,7 +10,7 @@ import { formatedResultsRouter } from "./routers/formatedResult";
  */
 export const appRouter = createTRPCRouter({
   result: singleResultRouter,
-  formatedResults: formatedResultsRouter
+  formatedResults: formatedResultsRouter,
 });
 
 export const serverSideCaller = appRouter.createCaller({ prisma });

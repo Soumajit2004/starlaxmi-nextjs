@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import type { pastThreeMonthsResultType, threeMonthResultType } from "../../types/resultTypes";
-import { timeOptions } from "../../data/data";
+import { timeOptions } from "../../utils/data";
 import moment from "moment";
 
 const monthIDs = [

@@ -2,7 +2,7 @@ import type { FunctionComponent } from "react";
 import React from "react";
 import { Formik } from "formik";
 import moment from "moment";
-import { timeOptions } from "../../../data/data";
+import { timeOptions } from "../../../utils/data";
 import { useSetRecoilState } from "recoil";
 import { selectedDateTimeState } from "../../../recoil/resultAtom";
 

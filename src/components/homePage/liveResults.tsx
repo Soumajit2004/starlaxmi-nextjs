@@ -1,5 +1,5 @@
 import styles from "../../styles/liveResults.module.css";
-import { timeOptions } from "../../data/data";
+import { timeOptions } from "../../utils/data";
 import type { todayResultType } from "../../types/resultTypes";
 
 const LiveAnimation = () => {
