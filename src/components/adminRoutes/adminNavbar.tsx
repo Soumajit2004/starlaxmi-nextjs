@@ -4,6 +4,11 @@ import { signOut, useSession } from "next-auth/react";
 export default function AdminNavbar() {
   const { data: session } = useSession();
 
+
+  const handleSighOut = () => {
+     void signOut()
+  }
+
   return (
     <div className={"border-b-2 bg-neutral"}>
       <div className="container navbar mx-auto h-20">
@@ -19,9 +24,8 @@ export default function AdminNavbar() {
           <div className="flex-none gap-10
           ">
             <button className={"btn btn-error font-sans"}
-                    onClick={async () => {
-                      await signOut();
-                    }}>
+                    onClick={handleSighOut}
+                    >
             <span className="material-symbols-rounded mr-2">
               logout
             </span>

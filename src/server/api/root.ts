@@ -2,7 +2,6 @@ import { createTRPCRouter } from "./trpc";
 import { singleResultRouter } from "./routers/singleResult";
 import { prisma } from "../db";
 import { formatedResultsRouter } from "./routers/formatedResult";
-import { authRouter } from "./routers/auth";
 
 /**
  * This is the primary router for your server.
@@ -12,7 +11,6 @@ import { authRouter } from "./routers/auth";
 export const appRouter = createTRPCRouter({
   result: singleResultRouter,
   formatedResults: formatedResultsRouter,
-  auth: authRouter
 });
 
 export const serverSideCaller = appRouter.createCaller({ prisma });

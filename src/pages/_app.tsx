@@ -9,7 +9,7 @@ import type { FunctionComponent, ReactNode } from "react";
 import { RecoilRoot } from "recoil";
 import { Toaster } from "react-hot-toast";
 import { SessionProvider } from "next-auth/react";
-import { Session } from "next-auth";
+import type { Session } from "next-auth";
 
 const display = Yeseva_One({
   weight: ["400"],

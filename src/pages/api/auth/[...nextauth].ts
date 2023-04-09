@@ -9,7 +9,7 @@ export default NextAuth({
       credentials: {
         password: { label: "Password", type: "password" }
       },
-      async authorize(credentials, req) {
+      authorize(credentials) {
         if (credentials?.password === `${moment().format("DD-MM-YYYY")}-admin`) {
           return { id: randomUUID() };
         }

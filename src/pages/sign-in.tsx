@@ -1,8 +1,7 @@
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
-import { signIn, useSession } from "next-auth/react";
+import { signIn } from "next-auth/react";
 import AdminLayout from "../components/adminRoutes/adminLayout";
-import toast from "react-hot-toast";
 import Head from "next/head";
 
 
@@ -15,15 +14,12 @@ const LoginSchema = Yup.object().shape({
 
 const LoginForm = () => {
 
-  const { data: session } = useSession();
-
   return (
     <Formik
       initialValues={{ password: "" }}
       validationSchema={LoginSchema}
       onSubmit={async (values, { setSubmitting }) => {
-
-        const res = await signIn("credentials", {
+         await signIn("credentials", {
           password: values.password,
           redirect: true,
           callbackUrl: "/admin"
