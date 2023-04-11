@@ -10,7 +10,7 @@ export default function AdminNavbar() {
   }
 
   return (
-    <div className={"border-b-2 bg-neutral"}>
+    <div className={"bg-neutral"}>
       <div className="container navbar mx-auto h-20">
         <div className="flex-1">
           <Link
