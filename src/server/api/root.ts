@@ -1,6 +1,5 @@
-import { createTRPCRouter } from "./trpc";
+import { createTRPCContext, createTRPCRouter } from "./trpc";
 import { singleResultRouter } from "./routers/singleResult";
-import { prisma } from "../db";
 import { formatedResultsRouter } from "./routers/formatedResult";
 
 /**
@@ -10,10 +9,9 @@ import { formatedResultsRouter } from "./routers/formatedResult";
  */
 export const appRouter = createTRPCRouter({
   result: singleResultRouter,
-  formatedResults: formatedResultsRouter,
+  formatedResults: formatedResultsRouter
 });
 
-export const serverSideCaller = appRouter.createCaller({ prisma });
 
 // export type definition of API
 export type AppRouter = typeof appRouter;

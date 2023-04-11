@@ -1,11 +1,11 @@
 import { createProxySSGHelpers } from "@trpc/react-query/ssg";
 import superjson from "superjson";
 import { appRouter } from "../root";
-import { prisma } from "../../db";
+import { createInnerTRPCContext, createTRPCContext } from "../trpc";
 
-export const generateSSGHelper = () =>
+export const generateSSGHelper = async () =>
   createProxySSGHelpers({
     router: appRouter,
-    ctx: { prisma },
-    transformer: superjson, // optional - adds superjson serialization
+    ctx: createInnerTRPCContext({session: null}),
+    transformer: superjson // optional - adds superjson serialization
   });

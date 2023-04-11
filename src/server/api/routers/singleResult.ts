@@ -1,8 +1,14 @@
 import { z } from "zod";
 
-import { createTRPCRouter, publicProcedure } from "../trpc";
-import { serverSideCaller } from "../root";
+import {
+  createInnerTRPCContext,
+  createTRPCContext,
+  createTRPCRouter,
+  protectedProcedure,
+  publicProcedure
+} from "../trpc";
 import { standardizeHour } from "../../../utils/dateTimeFormating";
+import { appRouter } from "../root";
 
 export const singleResultRouter = createTRPCRouter({
 
@@ -30,7 +36,7 @@ export const singleResultRouter = createTRPCRouter({
     }),
 
 // mutation of results
-  publishResult: publicProcedure
+  publishResult: protectedProcedure
     .input(z.object({
       date: z.date(),
       timeSlot: z.string(),
@@ -46,6 +52,8 @@ export const singleResultRouter = createTRPCRouter({
                        }, ctx
                      }) => {
       standardizeHour(date);
+
+      const serverSideCaller = appRouter.createCaller(createInnerTRPCContext({ session: null }));
 
       const { resultPublished } = await serverSideCaller.result.singleResult({
         queryDate: date,
