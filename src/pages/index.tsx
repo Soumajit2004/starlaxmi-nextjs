@@ -27,14 +27,14 @@ const Home: NextPage<HomePageProps> = ({ todayResult, pastThreeMonthsResult }) =
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
-        <section className={"container mx-auto grid h-[90vh] lg:grid-cols-2"}>
+      <main className={"mt-5"}>
+        <section className={"container mx-auto grid lg:grid-cols-2"}>
           <HeroText />
 
           <LiveResults todayResult={todayResult} />
         </section>
 
-        <section className={"container mx-auto py-5 lg:py-10"}>
+        <section className={"container mx-auto py-10 lg:py-10"}>
           <h3
             className={"text-2xl md:text-4xl xl:text-5xl font-display font-bold text-white mb-10 text-center lg:text-left"}>Previous
             Results</h3>
