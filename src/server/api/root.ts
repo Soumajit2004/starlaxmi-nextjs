@@ -1,4 +1,4 @@
-import { createTRPCContext, createTRPCRouter } from "./trpc";
+import { createTRPCRouter } from "./trpc";
 import { singleResultRouter } from "./routers/singleResult";
 import { formatedResultsRouter } from "./routers/formatedResult";
 
