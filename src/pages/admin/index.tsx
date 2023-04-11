@@ -16,7 +16,7 @@ export default function AdminDashboard() {
 
           <DateTimeSelectorForm/>
 
-          <div className="w-full flex-grow">
+          <div className="w-full flex-grow ">
              <ResultUploadForm />
           </div>
           
