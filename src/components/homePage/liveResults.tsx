@@ -20,10 +20,7 @@ const LiveAnimation = () => {
 export default function LiveResults({ todayResult }: { todayResult: todayResultType }) {
   const getResultByTime = (timeSlot: string): { resultLarge: number, resultSmall: number } => {
     const filteredData = todayResult.filter(({ timeSlot: t }) => {
-      if (t === timeSlot) {
-        return true;
-      }
-      return false;
+      return t === timeSlot;
     });
     return {
       resultLarge: filteredData[0]?.resultLarge || 0,
@@ -55,7 +52,7 @@ export default function LiveResults({ todayResult }: { todayResult: todayResultT
     <div className={"flex items-center justify-center"}>
       <div
         className={
-          "h-min py-10 px-4 md:p-10 rounded-2xl bg-base-100/20 text-center duration-500" +
+          "h-min p-4 md:p-10 rounded-2xl bg-base-100/20 text-center duration-500" +
           "hover:scale-102 hover:bg-base-100/50 border-2 hover:border-primary md:mx-20 lg:mx-5 w-full"
         }
       >
