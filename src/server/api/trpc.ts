@@ -67,7 +67,7 @@ export const createTRPCContext = async (opts: CreateNextContextOptions) => {
 import { initTRPC, TRPCError } from "@trpc/server";
 import superjson from "superjson";
 import { getServerAuthSession } from "../auth";
-import { Session } from "next-auth";
+import type { Session } from "next-auth";
 
 const t = initTRPC.context<typeof createTRPCContext>().create({
   transformer: superjson,
