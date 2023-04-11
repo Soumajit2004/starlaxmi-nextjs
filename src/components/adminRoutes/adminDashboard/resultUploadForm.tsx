@@ -75,7 +75,7 @@ const ResultUploadForm = () => {
 
           <form
             onSubmit={handleSubmit}
-            className="flex items-center justify-center border-2 min-w-full rounded-lg border-dashed border-white p-10 gap-5 mt-5">
+            className="flex flex-col sm:flex-row items-center justify-center border-2 min-w-full rounded-lg border-dashed border-white p-10 gap-5 mt-5">
 
             <input
               type="number"
