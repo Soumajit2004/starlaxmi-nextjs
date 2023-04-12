@@ -6,7 +6,7 @@ export default function Navbar() {
       <div className="navbar container mx-auto h-20">
         <div className="flex-1">
           <Link
-            className="text-2xl font-display tracking-wider uppercase text-white"
+            className="text-xl lg:text-2xl font-display tracking-wider uppercase text-white"
             href={"/"}
           >
             Starlaxmi
@@ -19,7 +19,7 @@ export default function Navbar() {
                 <span className="material-symbols-rounded">
                     search
                 </span>
-                <h3>Search</h3>
+                <span className={"hidden sm:inline"}>Search</span>
               </Link>
             </li>
           </ul>
