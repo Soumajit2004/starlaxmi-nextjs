@@ -27,7 +27,7 @@ const Home: NextPage<HomePageProps> = ({ todayResult, pastThreeMonthsResult }) =
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main className={"mt-5"}>
+      <main className={"mt-1 lg:mt-10"}>
         <section className={"container mx-auto grid lg:grid-cols-2"}>
           <HeroText />
 

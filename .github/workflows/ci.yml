@@ -4,8 +4,8 @@ on: [push, pull_request]
 
 env:
   DATABASE_URL: "https://fake.com"
-  NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: "fake"
-  CLERK_SECRET_KEY: "fake"
+  NEXTAUTH_URL: "http://localhost:3000"
+  NEXTAUTH_SECRET: "osdRfUjXn2r5f8e/A?D(G+KbPeShVkYp"
 
 jobs:
   build:

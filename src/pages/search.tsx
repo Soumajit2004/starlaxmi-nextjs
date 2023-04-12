@@ -16,8 +16,8 @@ const SearchPage: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className={"h-auto min-h-[90vh] container mx-auto justify-center items-center py-10"}>
-        <div className="grid lg:grid-cols-2 gap-5">
+      <main className={"h-auto min-h-[90vh] container mx-auto justify-center items-center mt-1 lg:mt-10"}>
+        <div className="grid lg:grid-cols-2 gap-2">
           <div className={"prose min-w-full pr-5"}>
             <h1 className={"font-display font-bold text-white text-3xl lg:text-5xl text-center lg:text-left"}>
               Search
