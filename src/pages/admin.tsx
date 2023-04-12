@@ -1,8 +1,7 @@
+import AdminLayout from "../components/adminRoutes/adminLayout";
 import Head from "next/head";
-import AdminLayout from "../../components/adminRoutes/adminLayout";
-import DateTimeSelectorForm from "../../components/adminRoutes/adminDashboard/dateTimeSelectorForm";
-import ResultUploadForm from "../../components/adminRoutes/adminDashboard/resultUploadForm";
-
+import DateTimeSelectorForm from "../components/adminRoutes/adminDashboard/dateTimeSelectorForm";
+import ResultUploadForm from "../components/adminRoutes/adminDashboard/resultUploadForm";
 
 export default function AdminDashboard() {
 
@@ -17,9 +16,9 @@ export default function AdminDashboard() {
           <DateTimeSelectorForm/>
 
           <div className="w-full flex-grow ">
-             <ResultUploadForm />
+            <ResultUploadForm />
           </div>
-          
+
         </div>
       </div>
     </AdminLayout>
