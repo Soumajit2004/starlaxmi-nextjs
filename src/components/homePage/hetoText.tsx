@@ -1,4 +1,5 @@
 import type { FunctionComponent } from "react";
+import JoinGameDialog from "./joinGameDialog";
 
 const HeroText: FunctionComponent = () => {
   return (
@@ -9,9 +10,7 @@ const HeroText: FunctionComponent = () => {
       </h1>
       <h2 className="mt-5 lg:text-xl xl:text-3xl text-white ">matka platform.</h2>
       <p>Starlaxmi is the best matka platform in Bengal. We provide the best</p>
-      <button className=" lg:btn-md btn-primary btn mt-10 h-16 w-40">
-        Join Now
-      </button>
+      <JoinGameDialog />
     </div>
   );
 };
