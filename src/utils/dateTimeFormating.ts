@@ -5,8 +5,8 @@ export const standardizeHour = (currentDate: Date): Date => {
   return currentDate;
 };
 
-const pastMonthsRange = (monthsBack: number) => {
-  const subtractedDate = moment(new Date()).subtract(monthsBack, "months");
+const monthsRange = (monthsBack: number, startingDate = new Date()) => {
+  const subtractedDate = moment(startingDate).subtract(monthsBack, "months");
   const start = subtractedDate.startOf("month").toDate();
   const end = subtractedDate.endOf("month").toDate();
 
@@ -20,10 +20,27 @@ const pastMonthsRange = (monthsBack: number) => {
 };
 export const lastThreeMonthsDateRange = () => {
   const pastDates = {
-    three: pastMonthsRange(2),
-    two: pastMonthsRange(1),
-    one: pastMonthsRange(0)
+    three: monthsRange(2),
+    two: monthsRange(1),
+    one: monthsRange(0)
   };
+
+  return pastDates;
+};
+
+export const yearDateRange = (dateOfYear: Date) => {
+  const pastDates: {[k: string]: any} = {};
+
+  const endOfYear = moment(dateOfYear).endOf("year").toDate();
+
+  for (let i = 0; i <= 12; i++) {
+    const monthsRanges = monthsRange(i, endOfYear)
+
+    pastDates[moment(monthsRanges.end).format("MMMM YYYY") as string] = {
+      allDates: monthsRanges.allDates
+    }
+
+  }
 
   return pastDates;
 };

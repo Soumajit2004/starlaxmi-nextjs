@@ -6,7 +6,7 @@ export type todayResultType =
   }[]
 
 
-export type threeMonthResultType = {
+export type monthlyResultType = {
   date: string,
   timeSlot: string,
   resultLarge: number,
@@ -16,15 +16,15 @@ export type threeMonthResultType = {
 export type pastThreeMonthsResultType =
   {
     thisMonth: {
-      results: threeMonthResultType,
+      results: monthlyResultType,
       allDates: string[]
     },
     lastMonth: {
-      results: threeMonthResultType,
+      results: monthlyResultType,
       allDates: string[]
     },
     secondLastMonth: {
-      results: threeMonthResultType,
+      results: monthlyResultType,
       allDates: string[]
     }
   }

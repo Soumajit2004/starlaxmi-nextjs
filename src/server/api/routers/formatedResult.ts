@@ -1,6 +1,6 @@
 import { createTRPCRouter, publicProcedure } from "../trpc";
 import { z } from "zod";
-import { lastThreeMonthsDateRange, standardizeHour } from "../../../utils/dateTimeFormating";
+import { lastThreeMonthsDateRange, standardizeHour, yearDateRange } from "../../../utils/dateTimeFormating";
 
 
 export const formatedResultsRouter = createTRPCRouter({
@@ -18,6 +18,14 @@ export const formatedResultsRouter = createTRPCRouter({
         }
       });
     }),
+  getFullYearsResult: publicProcedure
+    .input(z.object({ year: z.date() }))
+    .query(({ input: { year: queriedYear }, ctx }) => {
+      const dateRanges = yearDateRange(queriedYear);
+
+      console.log(dateRanges)
+    })
+  ,
   getThreeLastMonthsResults: publicProcedure
     .query(async ({ ctx }) => {
       const getMonthsResult = async ({ start, end }: { start: Date, end: Date }) => {
